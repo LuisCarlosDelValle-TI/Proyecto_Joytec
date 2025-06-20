@@ -15,9 +15,10 @@ body {
     width: 150px;
 }
 .btn-custom {
-    background-color: #6d4c41;
+    background-color: #b89d5b;
     color: white;
 }
 .btn-custom:hover {
-    background-color: var(--ecru) !important;
-}
+            background: #a4883e;
+            color: #fff;
+        }

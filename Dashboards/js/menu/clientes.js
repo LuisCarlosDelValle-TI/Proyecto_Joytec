@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     const apiUrl = 'http://localhost:3001/api/clientes';
+    console.log('URL usada para clientes:', apiUrl);
     const tabla = document.querySelector('.table tbody');
+    const token = localStorage.getItem('token'); // O donde guardes tu token
 
-    fetch(apiUrl)
+    fetch(apiUrl, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener los clientes');
@@ -54,17 +60,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function verCliente(idCliente) {
     // Redirigir a la página de edición del cliente
-<<<<<<< HEAD
-    window.location.href = `editar-cliente.html?id=${idCliente}`;
-=======
+
     window.location.href = `/Dashboards/html/ediciones/clientes.html?id=${idCliente}`;
->>>>>>> 556a526 (Primer commit)
 }
 
 function eliminarCliente(idCliente) {
     if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
-        fetch(`http://localhost:3001/api/clientes/${idCliente}`, {
-            method: 'DELETE'
+        fetch(`${apiUrl}/${idCliente}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
         })
             .then(response => {
                 if (!response.ok) {

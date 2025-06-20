@@ -6,6 +6,8 @@ const path = require('path');
 const { pool } = require('./Dash/config/db');
 const errorHandler = require('./Dash/middleware/error');
 const limiter = require('./Dash/middleware/ratel.limited');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // Importar rutas
 const authRoutes = require('./Dash/routes/auth.routes');
@@ -16,13 +18,18 @@ const productosRoutes = require('./Dash/routes/productos.routes');
 const proveedoresRoutes = require('./Dash/routes/proveedores.routes');
 const usuariosRoutes = require('./Dash/routes/usuarios.routes');
 const comprasRoutes = require('./Dash/routes/compras.routes');
+const registroRoutes = require('./Dash/routes/registro.routes');
 
 // Configuración de la aplicación
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middlewares globales
-app.use(cors());
+app.use(cors({
+    origin: '*', // O especifica el origen de tu frontend, por ejemplo: 'http://127.0.0.1:5501'
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -50,6 +57,29 @@ app.use('/api/productos', productosRoutes);
 app.use('/api/proveedores', proveedoresRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/compras', comprasRoutes);
+app.use('/api/auth', registroRoutes);
+
+// Supón que tienes algo así en tu backend:
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+    // Busca el usuario por correo
+    const result = await pool.query('SELECT * FROM usuarios WHERE correo = $1', [email]);
+    const usuario = result.rows[0];
+    if (!usuario) {
+        return res.json({ success: false });
+    }
+    // Compara la contraseña ingresada con el hash
+    const hash = usuario.contraseña; 
+    const match = await bcrypt.compare(password, hash);
+    if (match) {
+        // Login correcto
+        const token = jwt.sign({ id: usuario.id }, 'secreto', { expiresIn: '1h' });
+        res.json({ success: true, token });
+    } else {
+        // Contraseña incorrecta
+        res.json({ success: false });
+    }
+});
 
 // Manejo de rutas no encontradas
 app.use('*', (req, res) => {
@@ -74,3 +104,18 @@ process.on('unhandledRejection', (err) => {
   console.log(err.name, err.message);
   process.exit(1);
 });
+
+// Ejemplo de cómo hacer una solicitud con el token en los headers
+const hacerSolicitudConToken = async () => {
+  const token = 'tu_token_aqui';
+  const response = await fetch('http://localhost:3001/api/algun-endpoint', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  console.log(data);
+};
+
+hacerSolicitudConToken();

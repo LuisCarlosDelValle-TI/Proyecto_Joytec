@@ -1,71 +1,3 @@
-<<<<<<< HEAD
-$(document).ready(function () {
-    $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true
-    });
-});
-</script>
-
-<script>
-document.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Evitar recargar la página
-
-    // Obtener los datos del formulario
-    let clienteData = {
-        nombre: document.querySelector('input[placeholder="Ingrese su nombre"]').value,
-        apellido_paterno: document.querySelector('input[placeholder="Apellido paterno"]').value,
-        apellido_materno: document.querySelector('input[placeholder="Apellido materno"]').value,
-        telefono: document.querySelector('input[placeholder="10 dígitos"]').value,
-        correo: document.querySelector('input[placeholder="Correo electrónico"]').value,
-        pais: document.querySelector('input[placeholder="País"]').value,
-        estado: document.querySelector('input[placeholder="Estado"]').value,
-        ciudad: document.querySelector('input[placeholder="Ciudad"]').value,
-        cp: document.querySelector('input[placeholder="Código Postal"]').value,
-        fecha_nacimiento: document.querySelector('input[type="date"]').value
-    };
-
-    if (!clienteData.nombre || !clienteData.correo) {
-        alert('Por favor, completa todos los campos obligatorios.');
-        return;
-    }
-
-    console.log("Datos enviados:", clienteData);
-
-    // Realizar la solicitud POST a la API de clientes
-    fetch('http://localhost:3001/api/clientes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer 12345' // Si es necesario
-        },
-        body: JSON.stringify(clienteData)
-    })
-        .then(response => {
-            // Intentar parsear la respuesta JSON incluso si el código HTTP no es exitoso
-            return response.json().then(data => {
-                // Si el código HTTP no es exitoso, pero el backend indica éxito, no lanzar error
-                if (!response.ok && data.status !== 'success') {
-                    throw new Error(data.message || 'Error desconocido en el servidor');
-                }
-                return data; // Retorna los datos si la respuesta es exitosa
-            });
-        })
-        .then(data => {
-            if (data.status === 'success') {
-                alert('Cliente agregado con éxito!' );
-                console.log(data);
-                // Opcional: limpiar el formulario o redirigir
-                document.querySelector('form').reset();
-            } else {
-                alert('Ok: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error al realizar la solicitud:', error);
-            alert('Error al realizar la solicitud: ' + error.message);
-        });
-=======
 document.addEventListener("DOMContentLoaded", () => {
     fetch("/Dashboards/html/menu.html")
         .then(response => response.text())
@@ -185,5 +117,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
         });
     }
->>>>>>> 556a526 (Primer commit)
 });

@@ -4,10 +4,17 @@ const bcrypt = require('bcryptjs');
 class UsuarioController {
   static async listar(req, res) {
     try {
-      const result = await pool.query('SELECT id_usuario, nombre_usuario, rol FROM usuarios WHERE activo = true');
-      res.json(result.rows);
+        const result = await pool.query(
+            `SELECT 
+                id_usuario, 
+                nombre_usuario, 
+                correo
+            FROM usuarios`
+        );
+        res.json(result.rows);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+        console.error('Error en listarUsuarios:', error);
+        res.status(500).json({ message: 'Error interno del servidor' });
     }
   }
 
