@@ -101,4 +101,5 @@ LuisCarlosDEV-TI
 
 ---
 
-> Desarrollado
+> Desarrollado por Luis Carlos Del Valle Cruz
+> LuisCarlosDEV-TI
