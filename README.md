@@ -74,7 +74,7 @@ Sistema de gestión para joyería desarrollado con Node.js, Express y PostgreSQL
   npm start
   ```
 
-La aplicación estará disponible en [http://localhost:3001](http://localhost:3001).
+La aplicación estará disponible en [http://localhost:3001] (http://localhost:3001).
 
 ## Scripts disponibles
 
