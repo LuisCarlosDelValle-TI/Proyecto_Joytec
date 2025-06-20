@@ -1,0 +1,65 @@
+.btn-custom {
+    background-color: var(--ecru) !important;
+    border-color: #A68A64;
+    color: white;
+}
+.btn-custom:hover {
+    background-color: #997b59 !important;
+    border-color: #A68A64;
+    color: white;
+}
+.table-dark th{
+    background-color: var(--lion);
+    color: white;
+}
+.btn-danger {
+    background-color: var(--rosy-brown) !important;
+    border-color: var(--jet);
+    color: white;
+}
+.btn-danger:hover {
+    background-color: var(--jet) !important;
+    border-color: var(--jet);
+}
+
+.btn-success {
+    background-color: var(--jet) !important;
+    border-color: var(--lion);
+    color: white;
+}
+.btn-success:hover {
+    background-color: #6d6d6d !important;
+    border-color: #8b6d4d;
+}
+
+.nota-compra {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.nota-contenido {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+}
+
+.nota-contenido table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.nota-contenido button {
+    margin-top: 20px;
+}

@@ -1,0 +1,33 @@
+.card-custom-height {
+    height: 40em;
+    margin-bottom: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form{
+    background-color: var(--platinum);
+    width: 70em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group{
+    margin-bottom: 4em;
+}
+
+.btn-custom {
+    background-color: #C0B283ff; /* Cambia este valor al color que desees */
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #A68A64ff;
+}
+
+.card:hover{
+    transform: none;
+}

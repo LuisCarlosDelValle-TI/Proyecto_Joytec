@@ -1,0 +1,26 @@
+.form-editar-cliente {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            padding: 32px 28px 24px 28px;
+        }
+        .form-editar-cliente .form-label {
+            font-weight: 500;
+        }
+        .form-editar-cliente .btn {
+            min-width: 150px;
+        }
+        .titulo-clientes {
+            margin-bottom: 24px;
+        }
+        .btn-guardar-cambios {
+    background-color: #C0B283ff !important;
+    color: #fff !important;
+    border: none;
+}
+.btn-guardar-cambios:hover {
+    background-color: #a68a64 !important;
+    color: #fff !important;
+}

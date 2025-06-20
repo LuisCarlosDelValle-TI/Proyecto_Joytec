@@ -1,0 +1,123 @@
+:root {
+    --rosy-brown: #D4A5A5ff;
+    --ecru: #C0B283ff;
+    --platinum: #E5E5E5ff;
+    --lion: #A68A64ff;
+    --white-smoke: #F4F4F4ff;
+    --jet: #2A2A2Aff;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 80%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.card h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6b4f39;
+}
+.contenido {
+    margin-left: 200px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.barra-user {
+    position: sticky; 
+    top: 0; 
+    background-color: var(--ecru);
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-end;
+    max-width: 100%;
+    margin-bottom: 15px;
+    z-index: 99;
+    color: var(--jet);
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    height: auto;
+}
+.user-info i {
+    font-size: 24px;
+    color: #815E5B;
+    margin-left: 10px;
+}
+
+.barra-user .user-info p {
+    color: var(--jet);
+    margin: 0;
+}
+
+.barra-user .user-info i {
+    color: var(--jet);
+}
+.card {
+    background-color: var(--jet);
+    border: 1px solid var(--jet);
+    margin-bottom: 15%;
+    transition: transform 0.3s ease;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+.card p, .card h2{
+    color: var(--jet);
+    font-weight: bold;
+}
+
+.card h2{
+    font-size: 1em;
+}
+.ventas{
+    background-color: var(--ecru) !important;
+}
+
+.productos{
+    background-color: var(--platinum) !important;
+}
+
+.clientes{
+    background-color: var(--lion) !important;
+}
+
+.inventario{
+    background-color: var(--white-smoke) !important;
+}
+
+.card-title {
+    color: var(--jet);
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20em; /* Ajusta la altura según sea necesario */
+}
+
+#chartClientes {
+    height: 100px; /* Ajusta la altura de la gráfica circular */
+}

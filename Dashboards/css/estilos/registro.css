@@ -1,0 +1,34 @@
+body {
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  .left-section {
+    background: #1c1c1c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .left-section h2 {
+    font-size: 2rem;
+  }
+  .card-preview {
+    width: 300px;
+    height: 180px;
+    background-color: #000;
+    border-radius: 16px;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+  }
+  .form-section {
+    background: white;
+    padding: 4rem;
+  }
+  .btn-google, .btn-apple {
+    border: 1px solid #dee2e6;
+    background-color: white;
+  }

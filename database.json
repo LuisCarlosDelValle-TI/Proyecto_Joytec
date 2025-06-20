@@ -1,0 +1,11 @@
+{
+    "dev": {
+      "driver": "pg",
+      "user": "joyeria_user",
+      "password": "tu_password_actual",
+      "host": "localhost",
+      "database": "joyeria",
+      "port": 5432,
+      "ssl": false
+    }
+  }

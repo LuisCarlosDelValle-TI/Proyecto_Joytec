@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de nuevo producto</title>
+    <link rel="stylesheet" href="/Dashboards/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Dashboards/css/estilos/registros/productos.css">
+</head>
+<body>
+    <div id="menu-container"></div>    
+
+    <div class="contenido">
+        <div class="barra-user">
+            <div class="user-info">
+                <p>Juanito2014</p>
+                <i class="fa fa-user-circle" id="icono-usuario-activo"></i>
+            </div>
+        </div>
+        <a href="/Dashboards/html/productos.html" class="btn-regresar">
+            <i class="fa fa-arrow-left"></i>
+        </a>
+        <div class="parte-superior">
+            
+            <div class="container mt-4">
+                <div class="card shadow-lg p-6 card-custom-height">
+                    <h2 class="text-center mb-5">Registro Producto</h2>
+                    <form id="productoForm">
+                        <div class="row g-3 form-group">
+                            <div class="col-md-4">
+                                <label class="form-label">Nombre del Producto</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Ingrese el nombre del producto" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Material</label>
+                                <select class="form-select" name="material" required>
+                                    <option value="">Seleccione un material</option>
+                                    <option value="1">Madera</option>
+                                    <option value="2">Metal</option>
+                                    <option value="3">Plástico</option>
+                                    <option value="4">Vidrio</option>
+                                    <option value="5">Cerámica</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Precio</label>
+                                <input type="number" class="form-control" name="precio" placeholder="Ingrese Precio del Producto" required>
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-2 form-group">
+                            <div class="col-md-4">
+                                <label class="form-label">Stock Minimo</label>
+                                <input type="number" class="form-control" name="stock_minimo" placeholder="Stock Minimo" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Existencias</label>
+                                <input type="number" class="form-control" name="existencias" placeholder="Producto en Existencia" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Categoría</label>
+                                <select class="form-select" name="categoria" id="categoria" required>
+                                    <option value="">Seleccione una categoría</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-custom">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Cargar el menú desde el archivo externo
+            document.addEventListener("DOMContentLoaded", () => {
+              fetch("/Dashboards/html/menu.html")
+                .then(response => response.text())
+                .then(data => {
+                  document.getElementById("menu-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error al cargar el menú:", error));
+            });
+          </script>
+    
+        <script src="/Dashboards/js/menu/registros/productos.js"></script>
+</body>
+</html>

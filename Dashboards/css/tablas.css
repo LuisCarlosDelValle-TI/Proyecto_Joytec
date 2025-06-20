@@ -1,0 +1,81 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+table, th, td{
+    border: 1px solid #ddd;
+}
+th, td{
+    padding: 20px;  
+    text-align: center;
+}
+th{
+    background-color: rgb(214, 214, 214);
+}
+
+.operaciones{
+    display: flex;
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+}
+.operaciones button{
+    padding: 0%;
+    width: 0%;
+    cursor: pointer;
+    border: none;
+    background-color: #cb7575;
+    transition: background-color 0.3s;
+}
+
+.campo-busqueda {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.barra-busqueda {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#barra-busqueda {
+    padding: 5px 30px;
+    border: 1px solid black;
+    border-radius: 4px; 
+}
+
+.barra-busqueda i {
+    position: absolute; 
+    left: 10px;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+
+.boton-agregar{
+    cursor: pointer;
+    padding: 10px 10px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-editar-campos {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-editar {
+    background-color: #815E5B;
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #685155;
+    color: white;
+}
+

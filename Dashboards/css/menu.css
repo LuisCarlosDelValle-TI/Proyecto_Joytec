@@ -1,0 +1,84 @@
+:root {
+    --rosy-brown: #D4A5A5ff;
+    --ecru: #C0B283ff;
+    --platinum: #E5E5E5ff;
+    --lion: #A68A64ff;
+    --white-smoke: #F4F4F4ff;
+    --jet: #2A2A2Aff;
+}
+
+nav {
+    background-color: var(--rosy-brown);
+    padding: 10px;
+    border-right: 2px solid var(--ecru); /* Cambia el borde al lado derecho */
+    height: 100vh; /* Asegura que el menú ocupe toda la altura de la ventana */
+    width: 12em; /* Define el ancho del menú */
+    position: fixed; /* Fija el menú en la parte izquierda */
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Cambia la dirección a vertical */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+}
+
+nav ul li {
+    margin: 10px 0; /* Agrega espacio entre los elementos */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--jet);
+    
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: block; /* Asegura que el enlace ocupe todo el ancho disponible */
+    width: 100%; /* Alinea los enlaces al ancho del menú */
+}
+
+nav ul li a:hover {
+    background-color: var(--lion) !important;
+    color: var(--platinum) !important;
+}
+nav ul li.activo a{
+    font-weight: bold;
+}
+
+nav ul.menu li a.active {
+    color: white;
+    background-color: var(--lion);
+}
+
+/* Estilo base para las opciones del menú */
+.menu a {
+  color: black; /* Color de texto por defecto */
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Estilo para la opción activa */
+.menu a.active {
+    background-color: var(--lion) !important;
+    color: white !important;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Estilo para el estado hover */
+.menu a:hover {
+  color: white !important; /* Asegura que el texto sea blanco al hacer hover */
+  background-color: #333; /* Fondo al hacer hover */
+}
+
+.menu li a.active {
+    background-color: #d2b48c !important; /* Color "lion" */
+    color: white !important;
+    border-radius: 5px !important;
+}

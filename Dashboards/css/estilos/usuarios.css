@@ -1,0 +1,58 @@
+:root {
+    --rosy-brown: #D4A5A5;
+    --ecru: #C0B283;
+    --platinum: #E5E5E5;
+    --lion: #A68A64;
+    --white-smoke: #F4F4F4;
+    --jet: #2A2A2A;
+}
+body {
+    color: var(--jet);
+}
+.titulo-clientes {
+    color: var(--jet);
+    font-weight: bold;
+}
+.btn-nuevo {
+    background-color: var(--ecru) !important;
+    color: var(--white-smoke) !important;
+}
+.btn-nuevo:hover {
+    background-color: var(--lion) !important;
+    border-color: var(--lion) !important;
+}
+}
+.btn-nuevo i {
+    margin-right: 8px;
+}
+.table thead {
+    background-color: var(--lion);
+    color: white;
+}
+.table tbody tr:nth-child(even) {
+    background-color: var(--white-smoke);
+    border-color: var(--jet);
+}
+.table tbody tr:nth-child(odd) {
+    background-color: var(--white-smoke);
+    border-color: var(--jet);
+}
+.btn-secondary {
+    background-color: var(--white-smoke);
+    border-color: var(--white-smoke);
+    color: var(--jet);
+}
+.btn-secondary:hover {
+    background-color: var(--platinum);
+    border-color: var(--jet);
+    color: var(--jet);
+}
+nav ul li a {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: inline-block;
+}
+nav ul li a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}

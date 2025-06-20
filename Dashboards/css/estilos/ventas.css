@@ -1,0 +1,33 @@
+.btn-custom {
+    background-color: var(--ecru) !important;
+    border-color: #A68A64;
+    color: white;
+}
+.btn-custom:hover {
+    background-color: #997b59 !important;
+    border-color: #A68A64;
+    color: white;
+}
+.table-dark th{
+    background-color: var(--lion);
+    color: white;
+}
+.btn-danger {
+    background-color: var(--rosy-brown) !important;
+    border-color: var(--jet);
+    color: white;
+}
+.btn-danger:hover {
+    background-color: var(--jet) !important;
+    border-color: var(--jet);
+}
+
+.btn-success {
+    background-color: var(--jet) !important;
+    border-color: var(--lion);
+    color: white;
+}
+.btn-success:hover {
+    background-color: #6d6d6d !important;
+    border-color: #8b6d4d;
+}

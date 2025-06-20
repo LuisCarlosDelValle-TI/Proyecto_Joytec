@@ -1,0 +1,97 @@
+:root {
+    --rosy-brown: #D4A5A5;
+    --ecru: #C0B283;
+    --platinum: #E5E5E5;
+    --lion: #A68A64;
+    --white-smoke: #F4F4F4;
+    --jet: #2A2A2A;
+}
+body {
+    color: var(--jet);
+}
+.titulo-clientes {
+    color: var(--jet);
+    font-weight: bold;
+}
+.btn-nuevo {
+    background-color: var(--ecru) !important;
+    color: var(--white-smoke) !important;
+}
+.btn-nuevo:hover {
+    background-color: var(--lion) !important;
+    border-color: var(--lion) !important;
+}
+}
+.btn-nuevo i {
+    margin-right: 8px;
+}
+.table thead {
+    background-color: var(--lion);
+    color: white;
+}
+.table tbody tr:nth-child(even) {
+    background-color: var(--white-smoke);
+    border-color: var(--jet);
+}
+.table tbody tr:nth-child(odd) {
+    background-color: var(--white-smoke);
+    border-color: var(--jet);
+}
+.btn-secondary {
+    background-color: var(--white-smoke);
+    border-color: var(--white-smoke);
+    color: var(--jet);
+}
+.btn-secondary:hover {
+    background-color: var(--platinum);
+    border-color: var(--jet);
+    color: var(--jet);
+}
+nav ul li a {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: inline-block;
+}
+nav ul li a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+.operaciones {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+}
+.operaciones i{
+    margin-right: 0;
+    color: var(--jet);
+}
+
+.confirmacion-dialogo {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+
+.confirmacion-contenido {
+background-color: white;
+padding: 20px;
+border-radius: 8px;
+text-align: center;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+max-width: 400px; /* Limitar el ancho del cuadro */
+width: 90%; /* Asegurarse de que sea responsivo */
+}
+
+.botones-confirmacion {
+margin-top: 20px;
+display: flex;
+justify-content: center; /* Centrar los botones */
+gap: 10px; /* Espaciado entre los botones */
+}

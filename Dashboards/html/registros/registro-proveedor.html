@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de nuevo proveedor</title>
+    <link rel="stylesheet" href="/Dashboards/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Dashboards/css/estilos/registros/proveedor.css">
+</head>
+
+<body>
+    <div id="menu-container"></div>
+    <div class="contenido">
+        <div class="barra-user">
+            <div class="user-info">
+                <p>Juanito2014</p>
+                <i class="fa fa-user-circle" id="icono-usuario-activo"></i>
+            </div>
+        </div>
+        <div class="parte-superior">
+            <a href="/Dashboards/html/proveedores.html" class="btn-regresar">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+        <div class="parte-superior">
+
+            <div class="container mt-4">
+                <div class="card shadow-lg p-6 card-custom-height">
+                    <h2 class="text-center mb-5">Registro Proveedor</h2>
+                    <form id="registroProveedorForm" method="post">
+                        <div class="row g-3 form-group">
+                            <div class="col-md-4">
+                                <label for="razon-social" class="form-label">Razón Social</label>
+                                <input type="text" id="razon-social" name="razon-social" class="form-control"
+                                    placeholder="Ingrese su Razón Social" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="contacto">Teléfono de Contacto:</label>
+                                <input type="text" id="contacto" name="contacto" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="pais">Páis:</label>
+                                <input type="text" id="pais" name="pais" class="form-control" maxlength="40" required>
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-2 form-group">
+                            <div class="col-md-4">
+                                <label for="estado">Estado:</label>
+                                <input type="text" id="estado" name="estado" class="form-control" maxlength="40"
+                                    required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="ciudad">Ciudad:</label>
+                                <input type="text" id="ciudad" name="ciudad" class="form-control" maxlength="40"
+                                    required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cp">Código postal:</label>
+                                <input type="number" id="cp" name="cp" class="form-control" minlength="5" maxlength="5"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-2 form-group">
+                            <div class="col-md-4">
+                                <label class="form-label">Tipo de Proveedor</label>
+                                <select name="tipo-proveedor" id="tipo-proveedor" class="form-select" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="fisica">Persona Física</option>
+                                    <option value="moral">Persona Moral</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-2 form-group">
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-custom" id="guardar">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Cargar el menú desde el archivo externo
+        document.addEventListener("DOMContentLoaded", () => {
+          fetch("/Dashboards/html/menu.html")
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById("menu-container").innerHTML = data;
+            })
+            .catch(error => console.error("Error al cargar el menú:", error));
+        });
+      </script>
+
+    <script src="/Dashboards/js/menu/registros/proveedores.js"></script>
+</body>
+
+</html>

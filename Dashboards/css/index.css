@@ -1,0 +1,21 @@
+:root {
+    --rosy-brown: #D4A5A5ff;
+    --ecru: #C0B283ff;
+    --platinum: #E5E5E5ff;
+    --lion: #A68A64ff;
+    --white-smoke: #F4F4F4ff;
+    --jet: #2A2A2Aff;
+}
+
+.card {
+    background-color: var(--white-smoke);
+    border: 1px solid var(--jet);
+}
+
+.card-title {
+    color: var(--jet);
+}
+
+body {
+    background-color: var(--platinum);
+}
