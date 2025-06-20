@@ -1,24 +1,6 @@
 require('dotenv').config();
 const { Client } = require('pg');
-<<<<<<< HEAD
 
-console.log('DB_USER:', process.env.DB_USER);
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
-
-const client = new Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-});
-
-client.connect()
-  .then(() => console.log('Conectado a la base de datos joytec'))
-  .catch(err => console.error('Error de conexión a PostgreSQL:', err));
-
-module.exports = client;
-=======
 const { dbConfig } = require('./envConfig');
 
 class Database {
@@ -80,4 +62,3 @@ class Database {
 }
 
 module.exports = new Database();
->>>>>>> 556a526 (Primer commit)

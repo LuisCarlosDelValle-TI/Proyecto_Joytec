@@ -1,27 +1,6 @@
 const { Pool } = require('pg');
 const { dbConfig } = require('./envConfig');
 
-<<<<<<< HEAD
-const pool = new Pool({
-  user: dbConfig.user,
-  host: dbConfig.host,
-  database: dbConfig.database,
-  password: dbConfig.password,
-  port: dbConfig.port,
-  ssl: dbConfig.ssl ? { rejectUnauthorized: false } : false
-});
-
-// Manejo de errores de conexión
-pool.on('error', (err) => {
-  console.error('Unexpected error on idle client', err);
-  process.exit(-1);
-});
-
-module.exports = {
-  pool,
-  query: (text, params) => pool.query(text, params)
-};
-=======
 class DatabasePool {
     constructor() {
         this.pool = new Pool({
@@ -127,4 +106,3 @@ process.on('SIGINT', async () => {
 });
 
 module.exports = db;
->>>>>>> 556a526 (Primer commit)

@@ -1,21 +1,6 @@
 require('dotenv').config();
 
-<<<<<<< HEAD
-module.exports = {
-  dbConfig: {
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    ssl: process.env.DB_SSL === 'true'
-  },
-  jwtConfig: {
-    secret: process.env.JWT_SECRET,
-    expiresIn: process.env.JWT_EXPIRES_IN
-  }
-};
-=======
+
 const envConfig = {
     // Configuración de la base de datos
     dbConfig: {
@@ -78,4 +63,3 @@ if (missingEnvVars.length > 0) {
 }
 
 module.exports = envConfig;
->>>>>>> 556a526 (Primer commit)
