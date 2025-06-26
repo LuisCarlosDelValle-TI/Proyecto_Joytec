@@ -1,7 +1,7 @@
 // Función para cargar las categorías desde la API
 async function cargarCategorias() {
     try {
-        const response = await fetch('http://localhost:3001/api/categorias'); // Cambia la URL si es necesario
+        const response = await fetch('http://localhost:3002/api/categorias'); // Cambia la URL si es necesario
         if (response.ok) {
             const categorias = await response.json();
             console.log('Categorías recibidas:', categorias); // Depuración

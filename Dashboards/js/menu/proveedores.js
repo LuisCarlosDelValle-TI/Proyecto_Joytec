@@ -1,6 +1,6 @@
 async function cargarProveedores() {
     try {
-        const response = await fetch('http://localhost:3001/api/proveedores'); // Cambia la URL si es necesario
+        const response = await fetch('http://localhost:3002/api/proveedores'); // Cambia la URL si es necesario
         if (response.ok) {
             const proveedores = await response.json();
             console.log('Proveedores recibidos:', proveedores); // Verificar los datos recibidos

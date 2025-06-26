@@ -20,8 +20,8 @@ const validacionesProducto = [
 // Middleware para verificar roles autorizados
 const esAutorizado = verificarRol(['admin', 'empleado']);
 
-// Rutas públicas
-router.get('/', verificarToken, ProductosController.listarProductos);
+// Rutas públicas (temporalmente sin autenticación para pruebas)
+router.get('/', ProductosController.listarProductos);
 router.get('/:id', ProductosController.buscarPorId);
 router.get('/categoria/:categoriaId', ProductosController.buscarPorCategoria);
 

@@ -3,11 +3,18 @@ const { pool } = require('../../config/db');
 class ProductoController {
   static async listar(req, res) {
     try {
-      const result = await pool.query(
-        'SELECT p.*, c.nombre_categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria WHERE p.activo = true'
-      );
+      const result = await pool.query(`
+        SELECT p.id_producto, p.nombre, p.precio, p.stock_minimo, p.existencias, 
+               p.id_categoria, c.nombre_categoria, 
+               m.nombre_material
+        FROM productos p 
+        LEFT JOIN categorias c ON p.id_categoria = c.id_categoria
+        LEFT JOIN materiales m ON p.id_material = m.id_material
+        ORDER BY p.id_producto ASC
+      `);
       res.json(result.rows);
     } catch (error) {
+      console.error('Error al obtener productos:', error);
       res.status(500).json({ error: error.message });
     }
   }

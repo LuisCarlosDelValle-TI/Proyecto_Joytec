@@ -1,9 +1,10 @@
 // Función para cargar los productos desde la API
 async function cargarProductos() {
     try {
-        const response = await fetch('http://localhost:3001/api/productos'); // Cambia la URL si es necesario
+        const response = await fetch('http://localhost:3002/api/productos');
         if (response.ok) {
             const productos = await response.json();
+            console.log('Productos recibidos:', productos);
             const tabla = document.getElementById('productosTable').querySelector('tbody');
             tabla.innerHTML = ''; // Limpiar la tabla antes de agregar los datos
 
@@ -11,9 +12,9 @@ async function cargarProductos() {
                 const fila = document.createElement('tr');
                 fila.innerHTML = `
                     <td>${producto.id_producto}</td>
-                    <td>${producto.nombre_producto}</td>
+                    <td>${producto.nombre || 'Sin nombre'}</td>
                     <td>${producto.nombre_material || 'Sin material'}</td>
-                    <td>${producto.precio}</td>
+                    <td>$${producto.precio}</td>
                     <td>${producto.stock_minimo}</td>
                     <td>${producto.existencias}</td>
                     <td>${producto.nombre_categoria || 'Sin categoría'}</td>
@@ -22,7 +23,7 @@ async function cargarProductos() {
                             <a href="editar-producto.html?id=${producto.id_producto}">
                                 <button class="btn btn-link p-0 me-2"><i class="fa fa-eye icono-operacion"></i></button>
                             </a>
-                            <button class="btn btn-link p-0" onclick="confirmarEliminacion(${producto.id_producto}, '${producto.nombre_producto}')">
+                            <button class="btn btn-link p-0" onclick="confirmarEliminacion(${producto.id_producto}, '${producto.nombre}')">
                                 <i class="fa fa-trash icono-operacion"></i>
                             </button>
                         </div>

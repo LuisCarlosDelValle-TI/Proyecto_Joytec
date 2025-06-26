@@ -1,14 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const apiUrl = 'http://localhost:3001/api/clientes';
+    const apiUrl = 'http://localhost:3002/api/clientes';
     console.log('URL usada para clientes:', apiUrl);
     const tabla = document.querySelector('.table tbody');
-    const token = localStorage.getItem('token'); // O donde guardes tu token
 
-    fetch(apiUrl, {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-    })
+    fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener los clientes');
@@ -16,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(data => {
+            console.log('Datos recibidos:', data);
             data.forEach((cliente, index) => {
                 const fila = document.createElement('tr');
 
@@ -54,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             console.error('Error al cargar los clientes:', error);
-            alert('No se pudieron cargar los clientes.');
+            alert('No se pudieron cargar los clientes: ' + error.message);
         });
 });
 
@@ -66,22 +62,23 @@ function verCliente(idCliente) {
 
 function eliminarCliente(idCliente) {
     if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
+        const apiUrl = 'http://localhost:3002/api/clientes';
         fetch(`${apiUrl}/${idCliente}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
+            method: 'DELETE'
         })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al eliminar el cliente');
                 }
+                return response.json();
+            })
+            .then(data => {
                 alert('Cliente eliminado exitosamente');
                 location.reload(); // Recargar la página para actualizar la tabla
             })
             .catch(error => {
                 console.error('Error al eliminar el cliente:', error);
-                alert('No se pudo eliminar el cliente.');
+                alert('No se pudo eliminar el cliente: ' + error.message);
             });
     }
 }

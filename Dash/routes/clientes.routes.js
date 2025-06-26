@@ -22,11 +22,11 @@ const validacionesCliente = [
   body('fecha_nacimiento').isDate().withMessage('La fecha de nacimiento debe ser válida')
 ];
 
-// Rutas de clientes
-router.get('/', verificarToken, ClientesController.listarClientes);
-router.get('/:id', verificarToken, ClientesController.obtenerCliente);
-router.post('/', [verificarToken, ...validacionesCliente, validarCampos], ClientesController.crearCliente);
-router.put('/:id', [verificarToken, ...validacionesCliente, validarCampos], ClientesController.actualizarCliente);
-router.delete('/:id', verificarToken, ClientesController.eliminarCliente);
+// Rutas de clientes (temporalmente sin autenticación para pruebas)
+router.get('/', ClientesController.listarClientes);
+router.get('/:id', ClientesController.obtenerCliente);
+router.post('/', [...validacionesCliente, validarCampos], ClientesController.crearCliente);
+router.put('/:id', [...validacionesCliente, validarCampos], ClientesController.actualizarCliente);
+router.delete('/:id', ClientesController.eliminarCliente);
 
 module.exports = router;

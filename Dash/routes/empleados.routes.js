@@ -20,11 +20,11 @@ const validacionesEmpleado = [
   body('salario').isFloat({ min: 0 }).withMessage('El salario debe ser un número positivo')
 ];
 
-// Rutas de empleados
-router.get('/', verificarToken, EmpleadosController.listarEmpleados);
-router.get('/:id', verificarToken, EmpleadosController.obtenerEmpleado);
-router.post('/', [verificarToken, ...validacionesEmpleado, validarCampos], EmpleadosController.crearEmpleado);
-router.put('/:id', [verificarToken, ...validacionesEmpleado, validarCampos], EmpleadosController.actualizarEmpleado);
-router.delete('/:id', verificarToken, EmpleadosController.eliminarEmpleado);
+// Rutas de empleados (temporalmente sin autenticación para pruebas)
+router.get('/', EmpleadosController.listarEmpleados);
+router.get('/:id', EmpleadosController.obtenerEmpleado);
+router.post('/', [...validacionesEmpleado, validarCampos], EmpleadosController.crearEmpleado);
+router.put('/:id', [...validacionesEmpleado, validarCampos], EmpleadosController.actualizarEmpleado);
+router.delete('/:id', EmpleadosController.eliminarEmpleado);
 
 module.exports = router;

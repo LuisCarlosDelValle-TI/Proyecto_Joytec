@@ -1,7 +1,7 @@
 // Función para cargar los empleados desde la API
 async function cargarEmpleados() {
     try {
-        const response = await fetch('http://localhost:3001/api/empleados'); // Cambia la URL si es necesario
+        const response = await fetch('http://localhost:3002/api/empleados'); // Cambia la URL si es necesario
         if (response.ok) {
             const empleados = await response.json();
             console.log('Empleados recibidos:', empleados); // Depuración
