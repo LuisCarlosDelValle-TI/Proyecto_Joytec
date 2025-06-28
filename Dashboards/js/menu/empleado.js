@@ -1,7 +1,7 @@
 // Función para cargar los empleados desde la API
 async function cargarEmpleados() {
     try {
-        const response = await fetch('http://localhost:3002/api/empleados'); // Cambia la URL si es necesario
+        const response = await fetch('http://localhost:3001/api/empleados'); // Cambia la URL si es necesario
         if (response.ok) {
             const empleados = await response.json();
             console.log('Empleados recibidos:', empleados); // Depuración
@@ -19,9 +19,9 @@ async function cargarEmpleados() {
                     <td>${empleado.salario}</td>
                     <td>
                         <div class="operaciones">
-                            <a href="editar-empleado.html?id=${empleado.id_empleado}">
-                                    <button class="btn btn-link p-0 me-2"><i class="fa fa-eye icono-operacion"></i></button>
-                            </a>
+                            <button class="btn btn-link p-0 me-2" onclick="editarEmpleado(${empleado.id_empleado})">
+                                <i class="fa fa-eye icono-operacion"></i>
+                            </button>
                             <button class="btn btn-link p-0" onclick="confirmarEliminacionEmpleado(${empleado.id_empleado}, '${empleado.nombre}')">
                                 <i class="fa fa-trash icono-operacion"></i>
                             </button>
@@ -81,6 +81,11 @@ async function eliminarEmpleado(idEmpleado) {
     } catch (error) {
         console.error('Error al conectar con la API:', error);
     }
+}
+
+// Función para editar un empleado
+function editarEmpleado(idEmpleado) {
+    window.location.href = `/Dashboards/html/ediciones/empleado.html?id=${idEmpleado}`;
 }
 
 // Cargar los empleados al cargar la página

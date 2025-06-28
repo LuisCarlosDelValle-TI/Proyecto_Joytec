@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const apiUrl = 'http://localhost:3002/api/clientes';
+    const apiUrl = 'http://localhost:3001/api/clientes';
     console.log('URL usada para clientes:', apiUrl);
     const tabla = document.querySelector('.table tbody');
 
@@ -62,7 +62,7 @@ function verCliente(idCliente) {
 
 function eliminarCliente(idCliente) {
     if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
-        const apiUrl = 'http://localhost:3002/api/clientes';
+        const apiUrl = 'http://localhost:3001/api/clientes';
         fetch(`${apiUrl}/${idCliente}`, {
             method: 'DELETE'
         })

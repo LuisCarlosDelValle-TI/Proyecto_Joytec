@@ -1,6 +1,6 @@
 async function cargarProveedores() {
     try {
-        const response = await fetch('http://localhost:3002/api/proveedores'); // Cambia la URL si es necesario
+        const response = await fetch('http://localhost:3001/api/proveedores'); // Cambia la URL si es necesario
         if (response.ok) {
             const proveedores = await response.json();
             console.log('Proveedores recibidos:', proveedores); // Verificar los datos recibidos
@@ -20,11 +20,9 @@ async function cargarProveedores() {
                     <td>${proveedor.tipo_proveedor}</td>
                     <td>
                         <div class="operaciones">
-                            <a href="editar-proveedor.html?id=${proveedor.id_proveedor}">
-                                <button class="btn btn-link p-0 me-2">
-                                    <i class="fa fa-eye icono-operacion"></i>
-                                </button>
-                            </a>
+                            <button class="btn btn-link p-0 me-2" onclick="editarProveedor(${proveedor.id_proveedor})">
+                                <i class="fa fa-eye icono-operacion"></i>
+                            </button>
                             <button class="btn btn-link p-0" onclick="confirmarEliminacion(${proveedor.id_proveedor})">
                                 <i class="fa fa-trash icono-operacion"></i>
                             </button>
@@ -85,6 +83,11 @@ async function eliminarProveedor(idProveedor) {
         console.error('Error al conectar con la API:', error);
         alert('Hubo un problema al conectar con el servidor');
     }
+}
+
+// Función para editar un proveedor
+function editarProveedor(idProveedor) {
+    window.location.href = `/Dashboards/html/ediciones/proveedores.html?id=${idProveedor}`;
 }
 
 // Cargar los proveedores al cargar la página

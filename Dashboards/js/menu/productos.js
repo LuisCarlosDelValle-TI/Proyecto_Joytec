@@ -1,7 +1,7 @@
 // Función para cargar los productos desde la API
 async function cargarProductos() {
     try {
-        const response = await fetch('http://localhost:3002/api/productos');
+        const response = await fetch('http://localhost:3001/api/productos');
         if (response.ok) {
             const productos = await response.json();
             console.log('Productos recibidos:', productos);
@@ -20,9 +20,9 @@ async function cargarProductos() {
                     <td>${producto.nombre_categoria || 'Sin categoría'}</td>
                     <td>
                         <div class="operaciones">
-                            <a href="editar-producto.html?id=${producto.id_producto}">
-                                <button class="btn btn-link p-0 me-2"><i class="fa fa-eye icono-operacion"></i></button>
-                            </a>
+                            <button class="btn btn-link p-0 me-2" onclick="editarProducto(${producto.id_producto})">
+                                <i class="fa fa-eye icono-operacion"></i>
+                            </button>
                             <button class="btn btn-link p-0" onclick="confirmarEliminacion(${producto.id_producto}, '${producto.nombre}')">
                                 <i class="fa fa-trash icono-operacion"></i>
                             </button>
@@ -82,6 +82,11 @@ async function eliminarProducto(idProducto) {
     } catch (error) {
         console.error('Error al conectar con la API:', error);
     }
+}
+
+// Función para editar un producto
+function editarProducto(idProducto) {
+    window.location.href = `/Dashboards/html/ediciones/productos.html?id=${idProducto}`;
 }
 
 // Cargar los productos al cargar la página

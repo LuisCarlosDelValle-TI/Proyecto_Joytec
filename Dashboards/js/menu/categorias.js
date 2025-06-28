@@ -1,7 +1,7 @@
 // Función para cargar las categorías desde la API
 async function cargarCategorias() {
     try {
-        const response = await fetch('http://localhost:3002/api/categorias'); // Cambia la URL si es necesario
+        const response = await fetch('http://localhost:3001/api/categorias'); // Cambia la URL si es necesario
         if (response.ok) {
             const categorias = await response.json();
             console.log('Categorías recibidas:', categorias); // Depuración
@@ -16,11 +16,9 @@ async function cargarCategorias() {
                     <td>${categoria.nombre_categoria}</td>
                     <td>
                         <div class="operaciones">
-                            <a href="editar-categoria.html?id=${categoria.id_categoria}">
-                                <button class="btn btn-link p-0 me-2">
-                                    <i class="fa fa-eye icono-operacion"></i>
-                                </button>
-                            </a>
+                            <button class="btn btn-link p-0 me-2" onclick="editarCategoria(${categoria.id_categoria})">
+                                <i class="fa fa-eye icono-operacion"></i>
+                            </button>
                             <button class="btn btn-link p-0" onclick="confirmarEliminacionCategoria(${categoria.id_categoria}, '${categoria.nombre_categoria}')">
                                 <i class="fa fa-trash icono-operacion"></i>
                             </button>
@@ -80,6 +78,11 @@ async function eliminarCategoria(idCategoria) {
     } catch (error) {
         console.error('Error al conectar con la API:', error);
     }
+}
+
+// Función para editar una categoría
+function editarCategoria(idCategoria) {
+    window.location.href = `/Dashboards/html/ediciones/categorias.html?id=${idCategoria}`;
 }
 
 // Cargar las categorías al cargar la página
