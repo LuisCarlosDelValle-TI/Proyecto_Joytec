@@ -10,10 +10,11 @@ router.use(cors());
 
 // Validaciones para productos
 const validacionesProducto = [
-  body('nombre_producto').notEmpty().withMessage('El nombre del producto es obligatorio'),
-  body('descripcion').notEmpty().withMessage('La descripción es obligatoria'),
+  body('nombre').notEmpty().withMessage('El nombre del producto es obligatorio'),
+  body('nombre_material').optional(),
   body('precio').isFloat({ min: 0 }).withMessage('El precio debe ser un número positivo'),
-  body('stock').isInt({ min: 0 }).withMessage('El stock debe ser un número entero positivo'),
+  body('stock_minimo').isInt({ min: 0 }).withMessage('El stock mínimo debe ser un número entero positivo'),
+  body('existencias').isInt({ min: 0 }).withMessage('Las existencias deben ser un número entero positivo'),
   body('id_categoria').isInt().withMessage('La categoría es obligatoria')
 ];
 
@@ -25,11 +26,11 @@ router.get('/', ProductosController.listarProductos);
 router.get('/:id', ProductosController.buscarPorId);
 router.get('/categoria/:categoriaId', ProductosController.buscarPorCategoria);
 
-// Rutas protegidas
-router.post('/', [verificarToken, ...validacionesProducto, validarCampos], ProductosController.crearProducto);
-router.put('/:id', [verificarToken, ...validacionesProducto, validarCampos], ProductosController.actualizarProducto);
-router.delete('/:id', verificarToken, ProductosController.eliminarProducto);
-router.patch('/:id/stock', verificarToken, ProductosController.actualizarStock);
+// Rutas protegidas (temporalmente sin autenticación para pruebas)
+router.post('/', [...validacionesProducto, validarCampos], ProductosController.crearProducto);
+router.put('/:id', [...validacionesProducto, validarCampos], ProductosController.actualizarProducto);
+router.delete('/:id', ProductosController.eliminarProducto);
+router.patch('/:id/stock', ProductosController.actualizarStock);
 
 // Rutas adicionales
 router.get('/buscar/nombre/:nombre', ProductosController.buscarPorNombre);

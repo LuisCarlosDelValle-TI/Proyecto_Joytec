@@ -8,16 +8,16 @@ const router = express.Router();
 
 // Validaciones para el registro
 const validacionesRegistro = [
-  body('username').notEmpty().withMessage('El nombre de usuario es obligatorio'),
-  body('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
+  body('nombre_usuario').notEmpty().withMessage('El nombre de usuario es obligatorio'),
+  body('contraseña').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
   body('correo').isEmail().withMessage('Debe proporcionar un correo válido'),
-  body('rol').isIn(['admin', 'empleado']).withMessage('Rol no válido')
+  body('id_empleado').notEmpty().withMessage('El ID del empleado es obligatorio'),
 ];
 
 // Validaciones para el login
 const validacionesLogin = [
-  body('username').notEmpty().withMessage('El nombre de usuario es obligatorio'),
-  body('password').notEmpty().withMessage('La contraseña es obligatoria')
+  body('nombre_usuario').notEmpty().withMessage('El nombre de usuario es obligatorio'),
+  body('contraseña').notEmpty().withMessage('La contraseña es obligatoria')
 ];
 
 // Rutas de autenticación

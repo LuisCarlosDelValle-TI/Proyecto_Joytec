@@ -18,6 +18,7 @@ const productosRoutes = require('./Dash/routes/productos.routes');
 const proveedoresRoutes = require('./Dash/routes/proveedores.routes');
 const usuariosRoutes = require('./Dash/routes/usuarios.routes');
 const comprasRoutes = require('./Dash/routes/compras.routes');
+const ventasRoutes = require('./Dash/routes/ventas.routes');
 const registroRoutes = require('./Dash/routes/registro.routes');
 
 // Configuración de la aplicación
@@ -57,9 +58,7 @@ app.use('/api/productos', productosRoutes);
 app.use('/api/proveedores', proveedoresRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/compras', comprasRoutes);
-app.use('/api/auth', registroRoutes);
 
-// Supón que tienes algo así en tu backend:
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     // Busca el usuario por correo
@@ -81,19 +80,12 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// Manejo de rutas no encontradas
-app.use('*', (req, res) => {
-  res.status(404).json({
-    status: 'error',
-    message: 'Ruta no encontrada'
-  });
-});
 
 // Middleware de manejo de errores
 app.use(errorHandler);
 
 // Iniciar servidor
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
@@ -105,17 +97,10 @@ process.on('unhandledRejection', (err) => {
   process.exit(1);
 });
 
-// Ejemplo de cómo hacer una solicitud con el token en los headers
-const hacerSolicitudConToken = async () => {
-  const token = 'tu_token_aqui';
-  const response = await fetch('http://localhost:3001/api/algun-endpoint', {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
+// Manejo de rutas no encontradas
+app.use('*', (req, res) => {
+  res.status(404).json({
+    status: 'error',
+    message: 'Ruta no encontrada'
   });
-  const data = await response.json();
-  console.log(data);
-};
-
-hacerSolicitudConToken();
+});

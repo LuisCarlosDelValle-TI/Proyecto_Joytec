@@ -76,10 +76,7 @@ const configureMiddleware = (app) => {
     });
 };
 
-// Función auxiliar para crear el almacén de sesiones
 const createSessionStore = () => {
-    // Implementar según las necesidades del proyecto
-    // Ejemplos: Redis, MongoDB, PostgreSQL, etc.
     return null;
 };
 

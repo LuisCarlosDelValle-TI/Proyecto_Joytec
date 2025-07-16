@@ -21,10 +21,10 @@ class ProductoController {
 
   static async crear(req, res) {
     try {
-      const { nombre, descripcion, precio, stock, id_categoria } = req.body;
+      const { nombre, nombre_material, precio, stock_minimo, existencias, id_categoria } = req.body;
       const result = await pool.query(
-        'INSERT INTO productos (nombre, descripcion, precio, stock, id_categoria) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-        [nombre, descripcion, precio, stock, id_categoria]
+        'INSERT INTO productos (nombre, nombre_material, precio, stock_minimo, existencias, id_categoria) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+        [nombre, nombre_material, precio, stock_minimo, existencias, id_categoria]
       );
       res.status(201).json(result.rows[0]);
     } catch (error) {
