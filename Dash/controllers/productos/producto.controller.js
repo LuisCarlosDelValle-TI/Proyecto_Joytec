@@ -49,9 +49,22 @@ class ProductoController {
   static async eliminar(req, res) {
     try {
       const { id } = req.params;
-      await pool.query('UPDATE productos SET activo = false WHERE id_producto = $1', [id]);
+      console.log(`Intentando eliminar producto con ID: ${id}`);
+      
+      // Primero verificar si el producto existe
+      const checkResult = await pool.query('SELECT id_producto FROM productos WHERE id_producto = $1', [id]);
+      console.log(`Producto encontrado:`, checkResult.rows.length > 0 ? 'SÍ' : 'NO');
+      
+      if (checkResult.rows.length === 0) {
+        return res.status(404).json({ error: 'Producto no encontrado' });
+      }
+      
+      const result = await pool.query('UPDATE productos SET activo = false WHERE id_producto = $1 RETURNING *', [id]);
+      console.log(`Producto actualizado:`, result.rows.length > 0 ? 'SÍ' : 'NO');
+      
       res.json({ message: 'Producto eliminado correctamente' });
     } catch (error) {
+      console.error('Error completo al eliminar producto:', error);
       res.status(500).json({ error: error.message });
     }
   }
